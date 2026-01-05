@@ -38,6 +38,12 @@ public class CartController {
         cartService.clearCart();
     }
 
+    @DeleteMapping("/item/{foodId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removeItem(@PathVariable String foodId){
+        cartService.removeFromCartByFoodId(foodId);
+    }
+
     @PostMapping("/remove")
     public CartResponse removeFromCart(@RequestBody CartRequest request){
         String foodId = request.getFoodId();
